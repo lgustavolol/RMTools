@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.CommandBars;
 using System.Resources;
 using System.Reflection;
 using System.Globalization;
+using RMTools.Lib;
 
 namespace RMTools
 {
@@ -13,6 +14,9 @@ namespace RMTools
 	/// <seealso class='IDTExtensibility2' />
 	public class Connect : IDTExtensibility2, IDTCommandTarget
 	{
+    private DTE2 _applicationObject;
+    private AddIn _addInInstance;
+
 		/// <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
 		public Connect()
 		{
@@ -129,7 +133,16 @@ namespace RMTools
 				}
 			}
 		}
-		private DTE2 _applicationObject;
-		private AddIn _addInInstance;
-	}
+
+    private void FillContext()
+    {
+      RMTSession.ApplicationContext = this._applicationObject;
+      RMTSession.AddInInstanceContext = this._addInInstance;
+    }
+
+    private void InitializePlugin()
+    {
+      this.FillContext();
+    }
+  }
 }

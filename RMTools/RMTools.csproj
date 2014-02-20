@@ -120,6 +120,12 @@
     </Content>
     <Content Include="RMTools.AddIn" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RMTools.Lib\RMTools.Lib.csproj">
+      <Project>{9391c747-679b-4909-8bcd-dd539794c0f6}</Project>
+      <Name>RMTools.Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
     <PreBuildEvent>
